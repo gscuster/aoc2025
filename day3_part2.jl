@@ -9,4 +9,4 @@ function max(line)
     parse(Int, result)
 end
 
-readlines("input/day3.txt") |> lines->reduce(+, max.(lines)) |> println
+readlines("input/day3.txt") .|> max |> sum |> println

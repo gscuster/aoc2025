@@ -4,4 +4,4 @@ function max(line)
     parse(Int, digit1 * digit2)
 end
 
-readlines("input/day3.txt") |> lines->reduce(+, max.(lines)) |> println
+readlines("input/day3.txt") .|> max |> sum |> println
