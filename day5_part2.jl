@@ -28,7 +28,7 @@ function process(s::String)
         .|> (x -> split(x, "-"))
         .|> (x -> parse.(Int, x))
         |> (x -> sort(x, by=y->y[2])) # Optional sorting
-        |> sort # Optional sorting
+        |> sort
         |> combine
         .|> (((x, y),) -> y - x + 1)
         |> sum
