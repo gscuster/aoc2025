@@ -25,10 +25,6 @@ function connect!(connections, x, y)
     if groupyidx == groupxidx
         return
     end
-    println("Merging group $groupxidx with $groupyidx")
-    xsize = length(connections.groups[groupxidx])
-    ysize = length(connections.groups[groupyidx])
-    println("Connecting $xsize circuits with $ysize circuits")
 
     groupy = connections.groups[groupyidx]
     for idx in groupy
@@ -47,15 +43,11 @@ end
 function connectall(sqd, connections)
     n = size(sqd, 1)
     goal = length(connections.indexes)
-    conn = 0
     for i in 1:n
-        conn += 1
         x = sqd[i, 2]
         y = sqd[i, 3]
         connect!(connections, x, y)
-        println("Connected $x, $y. There are $conn connections")
         if length(connections.groups[connections.indexes[x]]) == goal
-            println("There are $conn connections between $goal circuits, last was $x, $y")
             return x, y
         end
     end
@@ -67,8 +59,6 @@ function process(m)
     n = size(m, 1)
     connections = Connections(n)
     i, j = connectall(sqd, connections)
-    display(m[i, :])
-    display(m[j, :])
     m[i, 1] * m[j, 1]
 end
 
