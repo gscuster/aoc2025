@@ -11,7 +11,7 @@ function process(lines)
             G.add_edge!(g, dict[label[1]], dict[node])
         end
     end
-    allpaths = G.all_simple_paths(g, dict["you"], n) |> collect
+    allpaths = G.all_simple_paths(g, dict["you"], n)
     return allpaths |> collect |> x -> size(x, 1)
 end
 
